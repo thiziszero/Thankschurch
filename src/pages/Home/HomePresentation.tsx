@@ -445,12 +445,13 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                 display="flex"
                 alignItems="center"
                 gap={4}
-                overflowX={{ base: "auto", md: "visible" }}
+                overflowX={{ base: "auto", md: "hidden" }}
                 px={{ base: 0, md: 4 }}
                 style={{
                   scrollSnapType: "x mandatory",
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
+                  WebkitOverflowScrolling: "touch",
                 }}
                 css={{
                   "&::-webkit-scrollbar": {
@@ -473,11 +474,12 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                 </IconButton>
 
                 <Box
-                  flex="1"
+                  flex={{ base: "0 0 100%", md: "1" }}
                   position="relative"
                   paddingBottom={{ base: "75%", md: "56.25%" }}
                   minWidth={{ base: "100%", md: "auto" }}
                   scrollSnapAlign="start"
+                  mx={{ base: 0, md: "auto" }}
                 >
                   <iframe
                     style={{
