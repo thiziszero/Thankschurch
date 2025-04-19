@@ -440,105 +440,103 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
               >
                 찬양
               </Text>
-              {/* 데스크톱 버전 */}
-              <Box display={{ base: "none", md: "block" }}>
-                <Box
-                  position="relative"
-                  display="flex"
-                  alignItems="center"
-                  gap={4}
-                >
-                  <IconButton
-                    aria-label="이전 영상"
-                    onClick={props.onPrevVideo}
-                    colorScheme="blackAlpha"
-                    variant="solid"
-                    size="lg"
-                    rounded="full"
-                    zIndex={2}
-                  >
-                    <MdChevronLeft size={32} />
-                  </IconButton>
-
-                  <Box flex="1" position="relative" paddingBottom="56.25%">
-                    <iframe
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        borderRadius: "8px",
-                      }}
-                      src={props.currentVideoSrc}
-                      title="YouTube video player"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                    ></iframe>
-                  </Box>
-
-                  <IconButton
-                    aria-label="다음 영상"
-                    onClick={props.onNextVideo}
-                    colorScheme="blackAlpha"
-                    variant="solid"
-                    size="lg"
-                    rounded="full"
-                    zIndex={2}
-                  >
-                    <MdChevronRight size={32} />
-                  </IconButton>
-                </Box>
-                <Text textAlign="center" mt={2} color="gray.600" fontSize="md">
-                  {props.currentVideoIndex + 1} / {props.totalVideos}
-                </Text>
-              </Box>
-
-              {/* 모바일 버전 */}
               <Box
-                display={{ base: "block", md: "none" }}
-                overflowX="auto"
-                width="100%"
-                style={{
-                  WebkitOverflowScrolling: "touch",
-                  scrollSnapType: "x mandatory",
-                  scrollbarWidth: "none",
-                  msOverflowStyle: "none",
-                }}
-                css={{
-                  "&::-webkit-scrollbar": {
-                    display: "none",
-                  },
-                }}
+                position="relative"
+                display="flex"
+                alignItems="center"
+                gap={4}
               >
-                <Box display="flex" width="max-content" minWidth="100%">
+                {/* 데스크톱에서만 보이는 네비게이션 버튼 */}
+                <IconButton
+                  aria-label="이전 영상"
+                  onClick={props.onPrevVideo}
+                  colorScheme="blackAlpha"
+                  variant="solid"
+                  size="lg"
+                  rounded="full"
+                  zIndex={2}
+                  display={{ base: "none", md: "flex" }}
+                >
+                  <MdChevronLeft size={32} />
+                </IconButton>
+
+                {/* 스크롤 가능한 영상 컨테이너 */}
+                <Box flex="1" overflow="hidden">
                   <Box
-                    width="100vw"
-                    position="relative"
-                    paddingBottom="75%"
-                    scrollSnapAlign="start"
+                    display="flex"
+                    width="100%"
+                    overflowX={{ base: "auto", md: "hidden" }}
+                    style={{
+                      scrollSnapType: "x mandatory",
+                      scrollBehavior: "smooth",
+                      WebkitOverflowScrolling: "touch",
+                    }}
+                    css={{
+                      "&::-webkit-scrollbar": {
+                        display: "none",
+                      },
+                      scrollbarWidth: "none",
+                      msOverflowStyle: "none",
+                    }}
                   >
-                    <iframe
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        borderRadius: "8px",
-                      }}
-                      src={props.currentVideoSrc}
-                      title="YouTube video player"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                    ></iframe>
+                    {Array.from({ length: props.totalVideos }).map(
+                      (_, index) => (
+                        <Box
+                          key={index}
+                          flex="0 0 100%"
+                          position="relative"
+                          paddingBottom="56.25%"
+                          scrollSnapAlign="start"
+                          style={{
+                            transform: `translateX(${
+                              (props.currentVideoIndex - index) * 100
+                            }%)`,
+                            transition: "transform 0.3s ease-in-out",
+                          }}
+                        >
+                          <iframe
+                            style={{
+                              position: "absolute",
+                              top: 0,
+                              left: 0,
+                              width: "100%",
+                              height: "100%",
+                              borderRadius: "8px",
+                            }}
+                            src={`${props.currentVideoSrc.split("?")[0]}?rel=0`}
+                            title={`YouTube video player ${index + 1}`}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen
+                          />
+                        </Box>
+                      )
+                    )}
                   </Box>
                 </Box>
+
+                <IconButton
+                  aria-label="다음 영상"
+                  onClick={props.onNextVideo}
+                  colorScheme="blackAlpha"
+                  variant="solid"
+                  size="lg"
+                  rounded="full"
+                  zIndex={2}
+                  display={{ base: "none", md: "flex" }}
+                >
+                  <MdChevronRight size={32} />
+                </IconButton>
               </Box>
+              <Text
+                textAlign="center"
+                mt={2}
+                color="gray.600"
+                fontSize={{ base: "sm", md: "md" }}
+              >
+                {props.currentVideoIndex + 1} / {props.totalVideos}
+              </Text>
             </Box>
           </MotionBox>
         </Box>
