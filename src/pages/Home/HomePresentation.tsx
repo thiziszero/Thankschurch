@@ -460,60 +460,23 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                   <MdChevronLeft size={32} />
                 </IconButton>
 
-                {/* 스크롤 가능한 영상 컨테이너 */}
-                <Box flex="1" overflow="hidden">
-                  <Box
-                    display="flex"
-                    width="100%"
-                    overflowX={{ base: "auto", md: "hidden" }}
+                <Box flex="1" position="relative" paddingBottom="56.25%">
+                  <iframe
                     style={{
-                      scrollSnapType: "x mandatory",
-                      scrollBehavior: "smooth",
-                      WebkitOverflowScrolling: "touch",
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "8px",
                     }}
-                    css={{
-                      "&::-webkit-scrollbar": {
-                        display: "none",
-                      },
-                      scrollbarWidth: "none",
-                      msOverflowStyle: "none",
-                    }}
-                  >
-                    {Array.from({ length: props.totalVideos }).map(
-                      (_, index) => (
-                        <Box
-                          key={index}
-                          flex="0 0 100%"
-                          position="relative"
-                          paddingBottom="56.25%"
-                          scrollSnapAlign="start"
-                          style={{
-                            transform: `translateX(${
-                              (props.currentVideoIndex - index) * 100
-                            }%)`,
-                            transition: "transform 0.3s ease-in-out",
-                          }}
-                        >
-                          <iframe
-                            style={{
-                              position: "absolute",
-                              top: 0,
-                              left: 0,
-                              width: "100%",
-                              height: "100%",
-                              borderRadius: "8px",
-                            }}
-                            src={`${props.currentVideoSrc.split("?")[0]}?rel=0`}
-                            title={`YouTube video player ${index + 1}`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                            allowFullScreen
-                          />
-                        </Box>
-                      )
-                    )}
-                  </Box>
+                    src={props.currentVideoSrc}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
                 </Box>
 
                 <IconButton
@@ -529,11 +492,50 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                   <MdChevronRight size={32} />
                 </IconButton>
               </Box>
+
+              {/* 모바일 네비게이션 */}
+              <Box
+                display={{ base: "flex", md: "none" }}
+                alignItems="center"
+                justifyContent="center"
+                gap={4}
+                mt={4}
+                px={4}
+              >
+                <IconButton
+                  aria-label="이전 영상"
+                  onClick={props.onPrevVideo}
+                  colorScheme="blackAlpha"
+                  variant="solid"
+                  size="md"
+                  rounded="full"
+                >
+                  <MdChevronLeft size={24} />
+                </IconButton>
+
+                <Text color="gray.600" fontSize="md" fontWeight="medium">
+                  {props.currentVideoIndex + 1} / {props.totalVideos}
+                </Text>
+
+                <IconButton
+                  aria-label="다음 영상"
+                  onClick={props.onNextVideo}
+                  colorScheme="blackAlpha"
+                  variant="solid"
+                  size="md"
+                  rounded="full"
+                >
+                  <MdChevronRight size={24} />
+                </IconButton>
+              </Box>
+
+              {/* 데스크톱 페이지 표시 */}
               <Text
                 textAlign="center"
                 mt={2}
                 color="gray.600"
-                fontSize={{ base: "sm", md: "md" }}
+                fontSize="md"
+                display={{ base: "none", md: "block" }}
               >
                 {props.currentVideoIndex + 1} / {props.totalVideos}
               </Text>
