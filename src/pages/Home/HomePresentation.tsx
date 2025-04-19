@@ -440,18 +440,72 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
               >
                 찬양
               </Text>
+              {/* 데스크톱 버전 */}
+              <Box display={{ base: "none", md: "block" }}>
+                <Box
+                  position="relative"
+                  display="flex"
+                  alignItems="center"
+                  gap={4}
+                >
+                  <IconButton
+                    aria-label="이전 영상"
+                    onClick={props.onPrevVideo}
+                    colorScheme="blackAlpha"
+                    variant="solid"
+                    size="lg"
+                    rounded="full"
+                    zIndex={2}
+                  >
+                    <MdChevronLeft size={32} />
+                  </IconButton>
+
+                  <Box flex="1" position="relative" paddingBottom="56.25%">
+                    <iframe
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "8px",
+                      }}
+                      src={props.currentVideoSrc}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    ></iframe>
+                  </Box>
+
+                  <IconButton
+                    aria-label="다음 영상"
+                    onClick={props.onNextVideo}
+                    colorScheme="blackAlpha"
+                    variant="solid"
+                    size="lg"
+                    rounded="full"
+                    zIndex={2}
+                  >
+                    <MdChevronRight size={32} />
+                  </IconButton>
+                </Box>
+                <Text textAlign="center" mt={2} color="gray.600" fontSize="md">
+                  {props.currentVideoIndex + 1} / {props.totalVideos}
+                </Text>
+              </Box>
+
+              {/* 모바일 버전 */}
               <Box
-                position="relative"
-                display="flex"
-                alignItems="center"
-                gap={4}
-                overflowX={{ base: "auto", md: "hidden" }}
-                px={{ base: 0, md: 4 }}
+                display={{ base: "block", md: "none" }}
+                overflowX="auto"
+                width="100%"
                 style={{
+                  WebkitOverflowScrolling: "touch",
                   scrollSnapType: "x mandatory",
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
-                  WebkitOverflowScrolling: "touch",
                 }}
                 css={{
                   "&::-webkit-scrollbar": {
@@ -459,68 +513,32 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                   },
                 }}
               >
-                {/* 네비게이션 버튼 - 모바일에서는 숨김 */}
-                <IconButton
-                  aria-label="이전 영상"
-                  onClick={props.onPrevVideo}
-                  colorScheme="blackAlpha"
-                  variant="solid"
-                  size="lg"
-                  rounded="full"
-                  zIndex={2}
-                  display={{ base: "none", md: "flex" }}
-                >
-                  <MdChevronLeft size={32} />
-                </IconButton>
-
-                <Box
-                  flex={{ base: "0 0 100%", md: "1" }}
-                  position="relative"
-                  paddingBottom={{ base: "75%", md: "56.25%" }}
-                  minWidth={{ base: "100%", md: "auto" }}
-                  scrollSnapAlign="start"
-                  mx={{ base: 0, md: "auto" }}
-                >
-                  <iframe
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      borderRadius: "8px",
-                    }}
-                    src={props.currentVideoSrc}
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  ></iframe>
+                <Box display="flex" width="max-content" minWidth="100%">
+                  <Box
+                    width="100vw"
+                    position="relative"
+                    paddingBottom="75%"
+                    scrollSnapAlign="start"
+                  >
+                    <iframe
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: "8px",
+                      }}
+                      src={props.currentVideoSrc}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    ></iframe>
+                  </Box>
                 </Box>
-
-                <IconButton
-                  aria-label="다음 영상"
-                  onClick={props.onNextVideo}
-                  colorScheme="blackAlpha"
-                  variant="solid"
-                  size="lg"
-                  rounded="full"
-                  zIndex={2}
-                  display={{ base: "none", md: "flex" }}
-                >
-                  <MdChevronRight size={32} />
-                </IconButton>
               </Box>
-              <Text
-                textAlign="center"
-                mt={2}
-                color="gray.600"
-                fontSize={{ base: "sm", md: "md" }}
-                display={{ base: "none", md: "block" }}
-              >
-                {props.currentVideoIndex + 1} / {props.totalVideos}
-              </Text>
             </Box>
           </MotionBox>
         </Box>
