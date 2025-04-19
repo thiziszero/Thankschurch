@@ -498,7 +498,7 @@ const Layout: React.FC = () => {
         pb={8}
         minH={`calc(100vh - ${headerHeight}px)`}
       >
-        <Container maxW="70%">
+        <Container maxW="80%">
           <Outlet />
         </Container>
       </Box>

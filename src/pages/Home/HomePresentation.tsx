@@ -75,7 +75,7 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
           <MotionBox
             width="100%"
             bg="gray.50"
-            py={8}
+            py={4}
             px={4}
             borderRadius="xl"
             initial="hidden"
@@ -104,12 +104,19 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                   },
                 }}
               >
-                <Image
-                  src="/assets/always_thanks.jpg"
-                  alt="home"
-                  width="100%"
-                  objectFit="cover"
-                />
+                <Box
+                  style={{
+                    userSelect: "none",
+                    pointerEvents: "none",
+                  }}
+                >
+                  <Image
+                    src="/assets/always_thanks.jpg"
+                    alt="home"
+                    width="100%"
+                    objectFit="cover"
+                  />
+                </Box>
               </MotionBox>
               <MotionBox
                 variants={{
@@ -124,12 +131,19 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                 }}
                 mt={4}
               >
-                <Image
-                  src="/assets/main_img.jpg"
-                  alt="main"
-                  width="100%"
-                  objectFit="cover"
-                />
+                <Box
+                  style={{
+                    userSelect: "none",
+                    pointerEvents: "none",
+                  }}
+                >
+                  <Image
+                    src="/assets/main_img_crop.jpg"
+                    alt="main"
+                    width="100%"
+                    objectFit="cover"
+                  />
+                </Box>
               </MotionBox>
             </Box>
           </MotionBox>
@@ -406,8 +420,8 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
           <MotionBox
             width="100%"
             bg="pink.50"
-            py={8}
-            px={4}
+            py={{ base: 6, md: 8 }}
+            px={{ base: 0, md: 4 }}
             mt={8}
             borderRadius="xl"
             initial="hidden"
@@ -417,7 +431,13 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
             transition={{ duration: 0.5 }}
           >
             <Box maxW="1200px" mx="auto">
-              <Text fontSize="2xl" textAlign="left" fontWeight="bold" mb={4}>
+              <Text
+                fontSize="2xl"
+                textAlign="left"
+                fontWeight="bold"
+                mb={4}
+                px={{ base: 4, md: 0 }}
+              >
                 찬양
               </Text>
               <Box
@@ -425,7 +445,20 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                 display="flex"
                 alignItems="center"
                 gap={4}
+                overflowX={{ base: "auto", md: "visible" }}
+                px={{ base: 0, md: 4 }}
+                style={{
+                  scrollSnapType: "x mandatory",
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                }}
+                css={{
+                  "&::-webkit-scrollbar": {
+                    display: "none",
+                  },
+                }}
               >
+                {/* 네비게이션 버튼 - 모바일에서는 숨김 */}
                 <IconButton
                   aria-label="이전 영상"
                   onClick={props.onPrevVideo}
@@ -434,11 +467,18 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                   size="lg"
                   rounded="full"
                   zIndex={2}
+                  display={{ base: "none", md: "flex" }}
                 >
                   <MdChevronLeft size={32} />
                 </IconButton>
 
-                <Box flex="1" position="relative" paddingBottom="56.25%">
+                <Box
+                  flex="1"
+                  position="relative"
+                  paddingBottom={{ base: "75%", md: "56.25%" }}
+                  minWidth={{ base: "100%", md: "auto" }}
+                  scrollSnapAlign="start"
+                >
                   <iframe
                     style={{
                       position: "absolute",
@@ -446,6 +486,7 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                       left: 0,
                       width: "100%",
                       height: "100%",
+                      borderRadius: "8px",
                     }}
                     src={props.currentVideoSrc}
                     title="YouTube video player"
@@ -464,6 +505,7 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                   size="lg"
                   rounded="full"
                   zIndex={2}
+                  display={{ base: "none", md: "flex" }}
                 >
                   <MdChevronRight size={32} />
                 </IconButton>
@@ -473,6 +515,7 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                 mt={2}
                 color="gray.600"
                 fontSize={{ base: "sm", md: "md" }}
+                display={{ base: "none", md: "block" }}
               >
                 {props.currentVideoIndex + 1} / {props.totalVideos}
               </Text>
