@@ -103,21 +103,7 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                     },
                   },
                 }}
-              >
-                <Box
-                  style={{
-                    userSelect: "none",
-                    pointerEvents: "none",
-                  }}
-                >
-                  <Image
-                    src="/Thankschurch-main/assets/always_thanks.jpg"
-                    alt="home"
-                    width="100%"
-                    objectFit="cover"
-                  />
-                </Box>
-              </MotionBox>
+              ></MotionBox>
               <MotionBox
                 variants={{
                   hidden: { opacity: 0, y: 20 },

@@ -32,21 +32,15 @@ const menuItems: MenuItem[] = [
     title: "교회소개",
     subItems: [
       {
-        title: "교회정보",
+        title: "교회안내",
         path: "/info",
         subItems: [
+          { title: "인사말", path: "/about/greeting" },
+          { title: "연혁", path: "/intro/history" },
           { title: "예배시간", path: "/info/worship-time" },
           { title: "약도 및 주차", path: "/info/location" },
           { title: "주보", path: "/info/weekly" },
           { title: "공지사항", path: "/info/notice" },
-        ],
-      },
-      {
-        title: "교회안내",
-        path: "/intro",
-        subItems: [
-          { title: "인사말", path: "/intro/greeting" },
-          { title: "연혁", path: "/intro/history" },
         ],
       },
     ],

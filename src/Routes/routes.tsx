@@ -2,6 +2,7 @@ import { RouteObject } from "react-router-dom";
 import Layout from "../layout/Layout";
 import Home from "../pages/Home/main";
 import About from "../pages/About/main";
+import Greeting from "../pages/About/Greeting/main";
 export const routes: RouteObject[] = [
   {
     path: "/",
@@ -14,6 +15,10 @@ export const routes: RouteObject[] = [
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "about/greeting",
+        element: <Greeting />,
       },
       // 다른 라우트들은 각각의 컴포넌트가 준비되면 추가할 예정입니다.
     ],
