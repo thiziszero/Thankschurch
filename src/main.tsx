@@ -8,7 +8,7 @@ import { AppProvider } from "./Context";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/Thankschurch-main/">
         <Provider>
           <App />
         </Provider>
