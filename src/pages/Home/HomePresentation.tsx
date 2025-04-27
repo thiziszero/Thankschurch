@@ -111,7 +111,7 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                   }}
                 >
                   <Image
-                    src="/assets/always_thanks.jpg"
+                    src="/Thankschurch-main/assets/always_thanks.jpg"
                     alt="home"
                     width="100%"
                     objectFit="cover"
@@ -138,7 +138,7 @@ const HomePresentation: React.FC<HomePresentationProps> = (props) => {
                   }}
                 >
                   <Image
-                    src="/assets/main_img_crop.jpg"
+                    src="/Thankschurch-main/assets/main_img_crop.jpg"
                     alt="main"
                     width="100%"
                     objectFit="cover"
