@@ -164,7 +164,7 @@ const Layout: React.FC = () => {
             <Flex justify="space-between" align="center">
               {/* 로고 */}
               <Image
-                src="/Thankschurch-main/assets/logo_thanks-removebg.png"
+                src="/assets/logo_thanks-removebg.png"
                 alt="Academy Logo"
                 h={{ base: 8, md: 10 }}
                 w="98px"
@@ -239,7 +239,7 @@ const Layout: React.FC = () => {
               {/* 모바일에서 로고 중앙 정렬 */}
               <Box position="absolute" left="50%" transform="translateX(-50%)">
                 <Image
-                  src="/Thankschurch-main/assets/logo_thanks-removebg.png"
+                  src="/assets/logo_thanks-removebg.png"
                   alt="Academy Logo"
                   h={8}
                   cursor="pointer"
