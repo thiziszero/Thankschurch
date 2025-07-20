@@ -1,129 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
 import { Table } from "@chakra-ui/react";
 
-const worshipTableRows = [
-  {
-    name: "주일예배 1부",
-    time: "08:00 am",
-    place: "본당",
-  },
-  {
-    name: "주일예배 2부",
-    time: "10:00 am",
-    place: (
-      <>
-        본당
-        <br />
-        <Text as="span" color="blue.600">
-          통역*: 영어, 중국어
-        </Text>
-      </>
-    ),
-  },
-  {
-    name: "주일예배 3부",
-    time: "12:00 pm",
-    place: (
-      <>
-        본당
-        <br />
-        <Text as="span" color="blue.600">
-          통역*: 영어, 일본어
-        </Text>
-      </>
-    ),
-  },
-  {
-    name: "주일예배 4부",
-    time: "02:30 pm",
-    place: "본당",
-  },
-];
-
-const sundaySchoolRows = [
-  {
-    name: "영아부",
-    time: "10:00 am - 12:00 pm",
-    place: (
-      <>
-        사무엘홀2(S302)
-        <br />
-        <Text as="span" color="blue.600">
-          0~3세 영아 및 부모
-        </Text>
-      </>
-    ),
-  },
-  {
-    name: "유아부",
-    time: "10:00 am - 12:00 pm",
-    place: (
-      <>
-        사무엘홀1(S301)
-        <br />
-        <Text as="span" color="blue.600">
-          4~5세
-        </Text>
-      </>
-    ),
-  },
-  {
-    name: "유치부",
-    time: "10:00 am - 12:00 pm",
-    place: (
-      <>
-        요한홀1(S401)
-        <br />
-        <Text as="span" color="blue.600">
-          6~7세
-        </Text>
-      </>
-    ),
-  },
-  {
-    name: "유년부",
-    time: (
-      <>
-        08:00 am
-        <br />
-        10:00 am
-        <br />
-        12:00 pm
-      </>
-    ),
-    place: (
-      <>
-        다윗홀1(S501)
-        <br />
-        <Text as="span" color="blue.600">
-          초등 1~2학년
-        </Text>
-      </>
-    ),
-  },
-  {
-    name: "초등부",
-    time: (
-      <>
-        08:00 am
-        <br />
-        10:00 am
-        <br />
-        12:00 pm
-      </>
-    ),
-    place: (
-      <>
-        다니엘홀1(S601)
-        <br />
-        <Text as="span" color="blue.600">
-          초등 3~4학년
-        </Text>
-      </>
-    ),
-  },
-];
-
 export function GreetingPresentation() {
   const evenRowBg = "blue.100";
   const oddRowBg = "white";
@@ -132,73 +9,50 @@ export function GreetingPresentation() {
     <Box p={8} bg="blue.50" borderRadius="lg" boxShadow="md">
       <Box mb={10}>
         <Text fontSize="2xl" fontWeight="bold" color="blue.900" mb={4}>
-          정기예배
+          인사말
+
         </Text>
-        <Table.Root size="md">
-          <Table.Header>
-            <Table.Row bg="blue.200">
-              <Table.ColumnHeader color="blue.900" fontWeight="bold">
-                예배
-              </Table.ColumnHeader>
-              <Table.ColumnHeader color="blue.900" fontWeight="bold">
-                시간
-              </Table.ColumnHeader>
-              <Table.ColumnHeader color="blue.900" fontWeight="bold">
-                장소
-              </Table.ColumnHeader>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {worshipTableRows.map((row, idx) => (
-              <Table.Row
-                key={row.name}
-                bg={idx % 2 === 0 ? evenRowBg : oddRowBg}
-              >
-                <Table.Cell fontWeight="semibold" color="blue.900">
-                  {row.name}
-                </Table.Cell>
-                <Table.Cell>{row.time}</Table.Cell>
-                <Table.Cell>{row.place}</Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table.Root>
+        
+      </Box>
+      <Box>
+        
+감사 교회 홈페이지를 찾은 모든 성도들에게 하나님의 은혜가 넘치시기를 기도합니다.
+
+감사 교회는 하나님께서 이 시대 가운데 거룩한 구원의 역사와
+진정한 부흥을 일으키시기 위해 세우신 교회입니다.
+
+처음 시작할 때의 교회 이름은 '좁은문 교회'였습니다.
+모두 다 넓은 길을 가고자 하는 시대에 좁은 길을 가고자 시작한 교회이기 때문입니다.
+철저한 회개와 성령의 거듭나게 하시는 은혜로 구원 받은 성도들이 모이는 교회,
+그리하여 참된 삶의 열매가 맺는 사랑의 교회가 있는 교회가 되는 것이
+처음의 소망이자, 소명이었습니다.
+
+그 동안 이러한 시대 흐름 때문에
+큰 보람과 동시에 많은 어려움을 가져다주었습니다.
+현저히 세속화된 사회, 그리고 그에 못지않게 세속화된 교회 현실에서
+철저한 회개를 시도하는 삶의 강조는
+종종 불편한 진리로 받아들여졌기 때문입니다.
+
+그러나 그것이 주님의 뜻이요, 주님께서 기뻐하시는 일임을 너무나 분명히 확신하였기에
+지금껏 주님의 두 손으로 조금도 흔들리지 않고 달려왔습니다.
+그리하여 하나님께서 세우신 뜻은 반드시 성취된다고 굳게 믿고 있습니다.
+언제나 주님을 부인하지 않는 한
+주님께서는 결코 우리를 부인하시지 않으실 것이 분명하기 때문입니다.
+
+그보다 더 확신하는 것은
+우리 가운데 선한 일을 시작하신 분이
+그리스도 예수의 날까지 지키시고 이루실 것이기 때문입니다(빌 1:6).
+믿음과 함께 하시고, 말씀과 함께 하시고,
+열심과 함께 하시고,
+사도 바울과 함께 하셨던 하나님께서는 지금도 우리와 함께 하십니다.
+
+“너희는 두려워 말고 가만히 서서
+여호와께서 오늘날 너희를 위하여 행하시는 구원을 보라.”
+(출 14:13)
+
+
       </Box>
 
-      <Box>
-        <Text fontSize="2xl" fontWeight="bold" color="blue.900" mb={4}>
-          주일학교예배
-        </Text>
-        <Table.Root size="md">
-          <Table.Header>
-            <Table.Row bg="blue.200">
-              <Table.ColumnHeader color="blue.900" fontWeight="bold">
-                부서
-              </Table.ColumnHeader>
-              <Table.ColumnHeader color="blue.900" fontWeight="bold">
-                시간
-              </Table.ColumnHeader>
-              <Table.ColumnHeader color="blue.900" fontWeight="bold">
-                장소
-              </Table.ColumnHeader>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {sundaySchoolRows.map((row, idx) => (
-              <Table.Row
-                key={row.name}
-                bg={idx % 2 === 0 ? evenRowBg : oddRowBg}
-              >
-                <Table.Cell fontWeight="semibold" color="blue.900">
-                  {row.name}
-                </Table.Cell>
-                <Table.Cell>{row.time}</Table.Cell>
-                <Table.Cell>{row.place}</Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table.Root>
-      </Box>
     </Box>
   );
 }
