@@ -14,6 +14,16 @@ export const toaster = createToaster({
   pauseOnPageIdle: true,
 })
 
+// toaster를 지우고 새로 생성하는 함수
+export const showToast = (options: { title: string; description?: string }) => {
+  // 기존 toaster들을 모두 제거하고 새로 생성
+  const toast = toaster.create(options);
+  // 3초 후 자동으로 제거
+  setTimeout(() => {
+    toaster.dismiss(toast);
+  }, 3000);
+}
+
 export const Toaster = () => {
   return (
     <Portal>

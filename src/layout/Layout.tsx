@@ -15,6 +15,7 @@ import {
 import { FaBars, FaTimes, FaUser } from "react-icons/fa";
 import { useAppContext } from "../Context";
 import { useMediaQuery } from "../utils/useMediaQuery";
+import { Toaster } from "../components/ui/toaster";
 
 interface SubMenuItem {
   title: string;
@@ -68,21 +69,21 @@ const menuItems: MenuItem[] = [
     subItems: [
       {
         title: "셀 안내",
-        path: "/education/cell",
+        path: "/education",
         subItems: [
-          { title: "자말묵셀", path: "/education/cell/cell1" },
-          { title: "거듭남격려셀", path: "/education/cell/cell2" },
-          { title: "기초소양셀", path: "/education/cell/cell3" },
+          { title: "자말묵셀", path: "/education/jamal" },
+          { title: "거듭남격려셀", path: "/education/encourage" },
+          { title: "기초소양셀", path: "/education/basic" },
         ],
       },
       {
         title: "교육부",
-        path: "/education/department",
+        path: "/department",
         subItems: [
-          { title: "유치부", path: "/education/department/kindergarten" },
-          { title: "주일학교", path: "/education/department/elementary" },
-          { title: "학생부", path: "/education/department/youth" },
-          { title: "청년부", path: "/education/department/young-adult" },
+          { title: "유치부", path: "/department/kindergarten" },
+          { title: "주일학교", path: "/department/elementary" },
+          { title: "중/고등부", path: "/department/middle-high" },
+          { title: "청년부", path: "/department/young-adult" },
         ],
       },
     ],
@@ -516,6 +517,7 @@ const Layout: React.FC = () => {
           </VStack>
         </Container>
       </Box>
+      <Toaster />
     </Box>
   );
 };
